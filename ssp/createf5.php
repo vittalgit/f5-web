@@ -166,32 +166,18 @@ ini_set('display_errors', 1);
 				$username  = $_POST['username'];
 				$password  = $_POST['password'];
 			echo "<pre>";	
-				//Execute the ansible playbook
 				
-//				shell_exec('cd f5-ansible_vittal-master');
-			$handle = popen("ansible-playbook /var/www/html/ssp/f5-ansible_vittal-master/create_pool.yml", "r");
+			$handle = popen("ansible-playbook /etc/ansible/playbook/create_network.yaml", "r");
 
 				while(!feof($handle)) {
 					 $buffer = fgets($handle);
 				         echo $buffer . "\n";
-					 usleep(100000); //sleep for 0.1 seconds
+					 usleep(1000000); //sleep for 1 seconds
 				}
 				pclose($handle);		
 				echo "</pre>";
-//	echo "<pre>"
-//	$output = shell_exec('ansible/var/www/html/ssp/f5-ansible_vittal-master/ansible-playbook create_pool.yml');
-//	echo $output;
-//	echo "</pre>";
-//				$output = shell_exec('pwd');
-//			echo "Inside after \n"	
 			  ?>
 			  
-			  <pre>
-				<?php
-				//	echo $output;
-//					echo "Outside"
-				?>
-			  </pre>
             </div>
           Click <a href="https://192.168.78.128/">here</a> to go to the Web Interface of F5 
           </div>
