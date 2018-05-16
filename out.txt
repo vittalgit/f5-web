@@ -1,0 +1,22 @@
+
+PLAY [Network BIGIP] *******************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************
+ok: [192.168.78.128]
+
+TASK [Create Interanl vlan] ************************************************************************
+ok: [192.168.78.128]
+
+TASK [Create interanl self-ip] *********************************************************************
+ok: [192.168.78.128]
+
+TASK [Create external vlan] ************************************************************************
+ok: [192.168.78.128]
+
+TASK [Create external self-ip] *********************************************************************
+fatal: [192.168.78.128]: FAILED! => {"changed": false, "msg": "400 Unexpected Error: Bad Request for uri: https://192.168.78.128:443/mgmt/tm/net/self/\nText: u'{\"code\":400,\"message\":\"01070354:3: Self IP 192.168.68.141 / 255.255.255.0: This network is defined on two vlans (/Common/internal_vlan and /Common/external_vlan)\",\"errorStack\":[],\"apiError\":3}'"}
+	to retry, use: --limit @/etc/ansible/playbooks/network_bigip.retry
+
+PLAY RECAP *****************************************************************************************
+192.168.78.128             : ok=4    changed=0    unreachable=0    failed=1   
+
