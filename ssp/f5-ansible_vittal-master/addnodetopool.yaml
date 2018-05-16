@@ -1,0 +1,42 @@
+---
+
+- name: Add node to the pool
+
+  hosts: f5
+
+  connection: local
+
+  tasks:
+
+    - name: Add nodes to pool
+
+      bigip_pool_member:
+
+        description: webserver-1
+
+        host: "{{ item.host }}"
+
+        name: "{{ item.name }}"
+
+        password: vangadi
+
+        pool: web
+
+        port: 80
+
+        server: 192.168.78.128
+
+        user: admin
+
+        validate_certs: no
+
+      delegate_to: localhost
+
+      with_items:
+
+        - host: 192.168.78.129
+
+          name: node-1
+
+        - host: 192.168.78.130
+          name: node-2

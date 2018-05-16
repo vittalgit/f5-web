@@ -1,0 +1,41 @@
+---
+
+- name: Create Virtual node
+
+  hosts: f5
+
+  connection: local
+
+  tasks:
+
+      - name: Create a VIP
+
+        bigip_virtual_server:
+
+            description: foo-vip
+
+            destination: 192.168.78.129
+
+            password: vangadi
+
+            name: vip-1
+
+            pool: web
+
+            port: 80
+
+            server: 192.168.78.128
+
+            snat: Automap
+
+            user: admin
+
+            all_profiles:
+
+                 - http
+
+                 - clientssl
+
+            validate_certs: no
+
+        delegate_to: localhost

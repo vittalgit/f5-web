@@ -1,0 +1,26 @@
+--- 
+
+- name: "Create Virtual node"
+
+  connection: local
+
+  hosts: f5
+
+  tasks: 
+
+      - name: assign policy to http vserver
+
+
+        bigip_command:
+
+          validate_certs: no
+
+          server: "192.168.78.128"
+
+          user: "admin"
+
+          password: "vangadi"
+
+          commands: 'tmsh modify ltm virtual /partition/vserver_name policies add { policy_to_assign }'
+
+        delegate_to: localhost

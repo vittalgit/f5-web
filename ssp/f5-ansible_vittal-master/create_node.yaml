@@ -1,0 +1,14 @@
+---
+- name: Create Pool
+  hosts: f5
+  connection: local
+  tasks:
+      - name: Create Node
+        bigip_node: 
+            host: 192.168.78.130
+            name: node-2
+            user: admin
+            password: vangadi
+            server: 192.168.78.128
+            validate_certs: no
+#        delegate_to: localhost
